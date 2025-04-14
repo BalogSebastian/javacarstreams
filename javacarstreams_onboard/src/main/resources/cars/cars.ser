@@ -1,0 +1,19 @@
+package cars;
+
+import java.io.*;
+import java.util.*;
+
+public class CarSerializer {
+    public static void main(String[] args) {
+        List<Car> cars = List.of(
+            new Car("Tesla", "Model S", 2020, 79999),
+            new Car("Toyota", "Corolla", 2010, 8999),
+            new Car("Ford", "Focus", 2015, 10500)
+        );
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/main/resources/cars/cars.ser"))) {
+            out.writeObject(cars);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
